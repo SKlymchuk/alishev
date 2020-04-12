@@ -1,20 +1,28 @@
 package org.example;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 @NoArgsConstructor
 public class MusicPlayer {
-    private Music music;
+    private List<Music> musicList = new ArrayList<>();
+    private String name;
+    private int volume;
 
     // IoC
-    public MusicPlayer(Music music) {
-        this.music = music;
+    public MusicPlayer(List<Music> music) {
+        this.musicList = music;
     }
 
-    public void setMusic(Music music){
-        this.music = music;
-    }
     public void playMusic() {
-        System.out.println("Playing... " + music.getSoung());
+        for(Music m : musicList) {
+            System.out.println("Playing... " + m.getSoung());
+        }
     }
 }
